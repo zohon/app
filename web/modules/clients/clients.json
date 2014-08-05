@@ -1,0 +1,8 @@
+{
+	"title" : "clients",
+	"folder" : "clients",
+	"css" : ["client"],
+	"models" : ["clientModel"],
+	"collections" : ["clientsCollection"],
+	"tempaltes" : ["clientsTempalte"]
+}
