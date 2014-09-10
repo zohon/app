@@ -12,9 +12,9 @@ h2 {
 }
 
 .content {
-	margin-top: 60px;
-    width: 95%;
-    padding:0;
+    margin-top: 60px;
+    padding: 0 15px;
+    width: 100%;
 }
 
 .navbar-fixed-top {
@@ -185,5 +185,16 @@ h2 {
 
 }
 
+/* FOOTER */
 
+.FooterView {
+    background: #000;
+    padding: 15px 5px;
+    min-height: 50px;
+    color :#FFF;
+}
 
+.FooterView h3{
+    margin:0;
+    padding:0;
+}
