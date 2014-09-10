@@ -1,0 +1,93 @@
+<script type="text/template" class="realisation_view">
+
+
+<div class="row">
+
+<div class=" col-sm-12" style="margin-top:15px;">
+
+	<div class="col-sm-5 block" style="">
+	<img src="realisations/rea5.jpg" style="max-width:100%; border-radius:5px;"/>
+
+	</div>
+
+	<div class="col-sm-7">
+	<span class="titleBlock">ébéniste</span>
+	<p class="block">
+		Duis arcu dolor, lacinia blandit lectus congue, faucibus feugiat nunc. Vivamus pellentesque, lacus at congue ultricies, quam turpis auctor mauris, a laoreet nisi velit sed eros. Duis varius accumsan erat. Integer mollis ultrices tortor, nec fermentum est lacinia at. Nulla pulvinar nisi ac nibh molestie pulvinar vel eget nisl. Ut placerat placerat dui vel venenatis. Praesent luctus mi eu euismod tincidunt. Curabitur ullamcorper libero et augue finibus, eget tristique diam dapibus. Aenean et tortor vitae ex porttitor posuere. Aenean pharetra leo ante, vitae luctus nunc ultricies quis. Duis fermentum sed neque eu pellentesque.</p>
+
+	<span class="titleBlock">Savoir-faire</span>
+	<p class="block">ac congue massa. Proin rutrum ligula eu sapien efficitur congue. Curabitur facilisis libero vel diam molestie porttitor. Curabitur lectus felis, interdum quis nisi eget, consequat sagittis erat. Aliquam sit amet posuere purus. Proin lobortis iaculis efficitur. Nam consequat finibus nibh.</p>
+
+	<span class="titleBlock">Atelier</span>
+	<p class="block">Ut et placerat erat. Etiam vitae auctor eros. Ut at orci varius, gravida nisl vitae, dignissim neque. Sed posuere magna a dui rutrum maximus. Phasellus ut urna magna. Nunc ac elementum tellus. Donec commodo ut ipsum vitae lobortis. Sed at ante ultricies, finibus ligula euismod, maximus enim. Sed vel leo dignissim, laoreet enim id, luctus purus. Phasellus imperdiet enim tristique dolor aliquet fringilla. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis fermentum tincidunt ipsum, non hendrerit nisi rutrum non. Aenean sed velit lacus.</p>
+	</div>
+</div>
+
+<h2 class="col-sm-12 headerH2">Tarifs</h2>
+
+<div class=" col-sm-12" style="margin-top:15px;">
+	<div class="col-sm-4" style="">
+		<span class="titleBlock">Reparations</span>
+		<div class="block">
+		<img src="realisations/rea7.jpg" style="max-width:100%; border-radius:5px;"/>
+		<p >ac congue massa. Proin rutrum ligula eu sapien efficitur congue. Curabitur facilisis libero vel diam molestie porttitor. Curabitur lectus felis, interdum quis nisi eget, consequat sagittis erat. Aliquam sit amet posuere purus. Proin lobortis iaculis efficitur. Nam consequat finibus nibh.</p>		
+		</div>
+		<br />
+	</div>
+
+	<div class="col-sm-4" style="">
+		<span class="titleBlock">Creations</span>
+		<div class="block">
+		<img src="realisations/rea6.jpg" style="max-width:100%; border-radius:5px;"/>
+		<p >ac congue massa. Proin rutrum ligula eu sapien efficitur congue. Curabitur facilisis libero vel diam molestie porttitor. Curabitur lectus felis, interdum quis nisi eget, consequat sagittis erat. Aliquam sit amet posuere purus. Proin lobortis iaculis efficitur. Nam consequat finibus nibh.</p>		
+		</div>
+		<br />
+	</div>
+
+	<div class="col-sm-4" style="">
+		<span class="titleBlock">Devis</span>
+		<div class="block">
+		<img src="realisations/rea4.jpg" style="max-width:100%; border-radius:5px;"/>
+		<p >ac congue massa. Proin rutrum ligula eu sapien efficitur congue. Curabitur facilisis libero vel diam molestie porttitor. Curabitur lectus felis, interdum quis nisi eget, consequat sagittis erat. Aliquam sit amet posuere purus. Proin lobortis iaculis efficitur. Nam consequat finibus nibh.</p>		
+		</div>
+		<br />
+	</div>	
+
+</div>
+
+<h2 class="col-sm-12 headerH2">Réalisations</h2>
+
+<div class="listRealisation col-sm-12"></div>
+</div>
+</script>
+
+<script type="text/template" class="realisation_view_item">
+
+  	<div class="content-realisation">
+
+  		<div class="carroussel">
+  			<div class="carrousselMedia">
+		  		<% if(model.get('img')) { %>
+			  	<img  src="<%= model.get('img') %>" />
+			  	<% } %>
+  			</div>
+	  	</div>
+
+		<div class="realisation-info">
+		  	<span class="title">Realisation <b><%= model.get('title') %></b></span>
+		  	<% if(model.get('time')) { %>
+		  	<hr style="margin:5px 0;"/>
+			<span class="glyphicon glyphicon-time" style="margin-right:5px;" ></span><span class="duree"><%= model.get('time') %>h</span>
+		     <% } %>
+		</div>
+
+		<% if(model.get('description')) { %>
+		<div class="realisation-info-complete">
+			<div class="close"><span class="glyphicon glyphicon-remove"></span></div>
+		  	<h3><%= model.get('title') %></h3>
+		  	<p><%= model.get('description') %></p>
+		</div>
+		<% } %>		
+	</div>
+
+</script>

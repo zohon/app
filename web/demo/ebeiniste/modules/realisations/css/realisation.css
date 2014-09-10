@@ -1,0 +1,84 @@
+
+.listRealisation .realisation {
+	width: 20%;
+    margin-bottom:5px;
+    padding: 5px;
+    overflow: hidden;
+    transition: 1s all ease;
+}
+
+.listRealisation .realisation:hover .realisation-info{
+	bottom:-100%;
+}
+
+.listRealisation .realisation .content-realisation {
+ 	border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+
+.listRealisation .realisation .realisation-info-complete {
+	background: none repeat scroll 0 0 #fff;
+    bottom: 0;
+    left:-100%;
+    height: 100%;
+    padding: 5px;
+    position: absolute;
+    width: 100%;
+    transition: 0.5s all ease; 
+}
+
+.listRealisation .realisation .realisation-info-complete h3 {
+	margin:0;
+	padding:0;
+	margin-bottom: 10px;
+	color:#555;
+}
+
+.listRealisation .realisation .realisation-info-complete .close {
+    color: #000;
+    font-size: 20px;
+    opacity: 1;
+    position: absolute;
+    right: 5px;
+    text-shadow: 0 1px #444;
+    top: 5px;
+}
+
+.listRealisation .realisation.active .realisation-info-complete {
+    left:0;
+}
+
+.listRealisation .realisation .realisation-info {
+	background: none repeat scroll 0 0 #fff;
+    bottom: 0;
+    padding: 5px;
+    position: absolute;
+    width: 100%;
+    transition: 0.8s all ease;
+    cursor: pointer;
+}
+
+.listRealisation .realisation.w2 {
+	width:40%;
+}
+
+.listRealisation .realisation.w3 {
+	width:60%;
+}
+
+.listRealisation .realisation.w4 {
+	width:80%;
+}
+
+.listRealisation .realisation.w4 {
+	width:100%;
+}
+
+.listRealisation .realisation img{
+	max-width:100%;
+	border-radius: 5px;
+	cursor: pointer;
+}
