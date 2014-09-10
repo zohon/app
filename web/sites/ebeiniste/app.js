@@ -1,6 +1,6 @@
 define(
-	['jquery', 'underscore', 'backbone', 'bootstrap', 'masonry' , 'modules/realisations', 'modules/footer'], 
-	function ($, _, Backbone, bootstrap, Masonry, realisations, footer) {
+	['jquery', 'underscore', 'backbone', 'bootstrap', 'masonry' , 'imagesLoaded' , 'modules/realisations', 'modules/footer'], 
+	function ($, _, Backbone, bootstrap, Masonry, imagesLoaded, realisations, footer) {
 
 	window.realisationsCollections = new realisations.collection.realisationsCollections();
 

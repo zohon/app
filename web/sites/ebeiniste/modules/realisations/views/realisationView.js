@@ -1,10 +1,10 @@
 define(
 	['jquery', 'underscore', 'backbone', 
-	'masonry',
+	'masonry', 'imagesLoaded',
 	'text!modules/realisations/templates/realisationsTemplate.html',
 	'modules/realisations/views/realisationViewItem'
 	], 
-	function ($, _, Backbone, Masonry, templates, realisationViewItem) {
+	function ($, _, Backbone, Masonry, imagesLoaded, templates, realisationViewItem) {
     var exports = {};
 
     if(!window.realisationsTemplate) {
@@ -55,10 +55,13 @@ define(
 		    		this.initMasonry()
 		    	},this), 300);
 			} else {
-				var msnry = new Masonry( container, {
-				  // options
-				  itemSelector: '.RealisationViewItem'
+
+				var msnry;
+				// initialize Masonry after all images have loaded
+				imagesLoaded( container, function() {
+				  msnry = new Masonry( container );
 				});
+
 			}
 
 	    }
