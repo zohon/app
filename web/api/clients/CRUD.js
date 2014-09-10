@@ -1,44 +1,40 @@
-exports.generateSchema = function (mongoose) {
+var mongoose = require('mongoose');
 
-	var clientsSchema = mongoose.Schema({
-	    name: String,
-	    menus : String,
-	    collaborative: Boolean,
-	    total : Number,
-	    paid : Boolean,
-	    paid_ticket : Number,
-	    paid_money : Number,
-	    ticket_amount : Number
-	})
+/*
+var clientsSchema = mongoose.Schema({
+    name: String,
+    menus : String,
+    collaborative: Boolean,
+    total : Number,
+    paid : Boolean,
+    paid_ticket : Number,
+    paid_money : Number,
+    ticket_amount : Number
+})
 
-	clientsSchema.methods.addTicket = function (number) {
+clientsSchema.methods.addTicket = function (number) {
 
-		if(!this.paid_ticket) {
-			this.paid_ticket = 0;
-		}
-
-		if(number) {
-			this.paid_ticket = paid_ticket+number;
-		} else {
-			this.paid_ticket = paid_ticket+1;
-		}
-	
+	if(!this.paid_ticket) {
+		this.paid_ticket = 0;
 	}
 
-	clientsSchema.methods.paidMoney = function (amount) {
-		this.paidMoney = amount;
+	if(number) {
+		this.paid_ticket = paid_ticket+number;
+	} else {
+		this.paid_ticket = paid_ticket+1;
 	}
 
-	return clientsSchema;
 }
 
-exports.init = function (mongoose) {
-	var clientsSchema = this.generateSchema(mongoose);
-  	var clients = mongoose.model('clients', clientsSchema); // init model
-	return clients;
+clientsSchema.methods.paidMoney = function (amount) {
+	this.paidMoney = amount;
 }
 
-exports.index = function(mongoose, params) {
+var clients = mongoose.model('clients', clientsSchema);
+*/
+var clients = mongoose.model('clients');
+
+exports.index = function(params) {
 
 	if(params) {
 		params.search = {};
@@ -46,10 +42,11 @@ exports.index = function(mongoose, params) {
 		params = {};
 	}
 	
-	this.search(mongoose, params);
+	this.search(params);
+	
 }
 
-exports.search = function(mongoose, params) {
+exports.search = function(params) {
 
 	search = {};
 
@@ -57,30 +54,58 @@ exports.search = function(mongoose, params) {
 		search = params.search;
 	}
 
-	var clients = this.init(mongoose);
+	clients.find(search, function (err, clients) {
 
-	var mongoosedb = mongoose.connection;
-	mongoosedb.on('error', console.error.bind(console, 'connection error:'));
-	mongoosedb.once('open', function callback () {
+		if(err){
+			mongoose.connection.close();
+		}else{
+			mongoose.connection.close();
+			console.log(clients);
+			if(params.callbacks && params.callbacks.success) {
+				params.callbacks.success.call(this, clients);
+			}
+		}
+
+	 });
+
+/*
+	if(!this.mongoosedb) {
+		this.mongoosedb = mongoose.connection;
+	}
+
+	this.mongoosedb.once('open', function callback () {
 	  console.log("We are searching in mongodb");
 
-	  clients.find(search, function (err, clients) {
-	  	if(params.callbacks && params.callbacks.success) {
-	  		params.callbacks.success.call(this, clients);
-	  	}
+	  that.clients.find(search, function (err, clients) {
+
+		if(err){
+			mongoose.connection.close();
+		}else{
+			mongoose.connection.close();
+			console.log(clients);
+			if(params.callbacks && params.callbacks.success) {
+				params.callbacks.success.call(this, clients);
+			}
+		}
+
 	  });
 		
-	});	
+	});	*/
 
 }
 
 exports.save = function(mongoose, item) {
-
+/*
 	var clients = this.init(mongoose);
 
-	var mongoosedb = mongoose.connection;
-	mongoosedb.on('error', console.error.bind(console, 'connection error:'));
-	mongoosedb.once('open', function callback () {
+	if(!this.mongoosedb) {
+		this.mongoosedb = mongoose.connection;
+	} else {
+
+	}
+	
+	this.mongoosedb.on('error', console.error.bind(console, 'connection error:'));
+	this.mongoosedb.once('open', function callback () {
 	  console.log("We are connected to mongodb");
 
 		item.save(function (err, client) {
@@ -89,6 +114,7 @@ exports.save = function(mongoose, item) {
 		});	
   
   });
+*/
 }
 
 module.exports = exports;

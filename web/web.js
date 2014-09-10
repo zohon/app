@@ -8,37 +8,57 @@ var counter = 0;
 
 var port = Number(process.env.PORT || 5000);
 
-var mongoose = require('./api/mongodb/mongodb.js').mongoose();
-/*
-var parameters = {
-callbacks : {
-  success : function(data) {
-    console.log(data);
-  }
-}
-};
-
-var clients = require('./api/clients/CRUD.js').index(mongoose, parameters);
-*/
-
-
-var clients = require('./api/clients/CRUD.js');
-
-var parameters = {
-params : { id: /^53e0d673852539fc13b662d9/ },
-callbacks : {
-  success : function(data) {
-    console.log(data);
-  }
-}
-};
-
-clients.search(mongoose, parameters);
-
-
 var webDirectory = "web/";
 
 var server = http.createServer(function(request, response) {
+
+
+  if(request.url.substr(1, 3) == "api") {
+
+      var headers = {
+        "Content-Type" :"application/json"
+      };
+      response.writeHead(200, headers);
+
+      if(request.url.substr(5, 7)) {
+
+        if(request.url.substr(5, 7) == 'clients') {
+
+                    if(!this.clients) {
+            this.clients = require('./api/clients/CRUD.js');
+          }
+
+          var parameters = {
+          //params : { id: /^53e0d673852539fc13b662d9/ },
+          callbacks : {
+            success : function(data) {
+              console.log(data);
+              reponseJSON = JSON.stringify(data, 0, 4);
+              response.write(reponseJSON);
+              response.end();
+            }
+          }
+          };
+
+          if(request.url.substr(12)) {
+            parameters.search = {
+              id : "/^"+request.url.substr(12)+"/"
+            };
+            this.clients.search(parameters);
+          } else {
+            this.clients.index(parameters);
+          }
+
+        } else {
+           response.end();
+        }
+
+        return;
+      
+      }
+
+
+  } 
 
   var uri = webDirectory+url.parse(request.url).pathname
     , filename = path.join(process.cwd(), uri);
@@ -48,6 +68,7 @@ var server = http.createServer(function(request, response) {
     '.css':  "text/css",
     '.js':   "text/javascript"
   };
+
 
   fs.exists(filename, function(exists) {
     if(!exists) {
@@ -75,6 +96,8 @@ var server = http.createServer(function(request, response) {
       response.end();
     });
   });
+
 }).listen(parseInt(port, 10));
 
 console.log("Starting web server at " + port);
+
