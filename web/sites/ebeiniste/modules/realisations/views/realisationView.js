@@ -50,7 +50,7 @@ define(
 				clearTimeout(this.timeoutInitMasonry);
 			}
 
-			if($(container).width() <= 100) {
+			if($(container).width() <= 100 || $(container).height() <= 0) {
 		    	this.timeoutInitMasonry = setTimeout(_.bind(function(){
 		    		this.initMasonry()
 		    	},this), 100);
