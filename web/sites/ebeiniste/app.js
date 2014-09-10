@@ -53,10 +53,11 @@ define(
 
 	$('.realisationView').html(RealisationView.render().$el);
 
-	console.log(footer);
-
 	window.FooterView = new footer.view.FooterView();
 	$('.footerView').html(FooterView.render().$el);
 
+	this.timeoutInitMasonry = setTimeout(_.bind(function(){
+		RealisationView.initMasonry()
+	},this), 500);
 
 });
