@@ -53,7 +53,7 @@ define(
 			if($(container).width() <= 100 || $(container).height() <= 0) {
 		    	this.timeoutInitMasonry = setTimeout(_.bind(function(){
 		    		this.initMasonry()
-		    	},this), 100);
+		    	},this), 300);
 			} else {
 				var msnry = new Masonry( container, {
 				  // options
