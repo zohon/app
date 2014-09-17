@@ -1,0 +1,7 @@
+-- git push heroku master
+
+
+-- foreman start (http://localhost:5000)
+
+
+http://zohon.herokuapp.com
